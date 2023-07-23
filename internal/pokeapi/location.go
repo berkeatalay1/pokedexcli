@@ -7,11 +7,8 @@ import (
 )
 
 // ListLocations -
-func (c *Client) ListLocations(pageURL *string) (RespShallowLocations, error) {
-	url := baseURL + "/location-area"
-	if pageURL != nil {
-		url = *pageURL
-	}
+func (c *Client) explore(locationName string) (RespShallowLocations, error) {
+	url := baseURL + "/location-area/" + locationName
 
 	cache, isFound := c.cache.Get(url)
 	if isFound {
