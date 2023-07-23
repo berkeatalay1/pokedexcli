@@ -1,7 +1,6 @@
 package pokecache
 
 import (
-	"fmt"
 	"sync"
 	"time"
 )
@@ -21,8 +20,6 @@ func (c *Cache) Add(key string, val []byte) {
 	c.mu.Lock()
 	defer c.mu.Unlock()
 
-	fmt.Println(fmt.Sprintf(`%s is added to cache`, key))
-
 	c.cache[key] = CacheEntry{
 		createdAt: time.Now(),
 		val:       val,
@@ -34,7 +31,6 @@ func (c *Cache) Get(key string) ([]byte, bool) {
 	defer c.mu.Unlock()
 
 	result, isFound := c.cache[key]
-	fmt.Println(fmt.Sprintf(`Requested key:%v  is found:%v`, key, isFound))
 	return result.val, isFound
 }
 
