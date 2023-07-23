@@ -1,5 +1,7 @@
 package pokeapi
 
+import "fmt"
+
 type Pokemon struct {
 	ID             int    `json:"id"`
 	Name           string `json:"name"`
@@ -255,4 +257,32 @@ type Pokemon struct {
 			} `json:"type"`
 		} `json:"types"`
 	} `json:"past_types"`
+}
+
+func (poke *Pokemon) Details() {
+	/*Name: pidgey
+	Height: 3
+	Weight: 18
+	Stats:
+	  -hp: 40
+	  -attack: 45
+	  -defense: 40
+	  -special-attack: 35
+	  -special-defense: 35
+	  -speed: 56
+	Types:
+	  - normal
+	  - flying */
+	println("Name: " + poke.Name)
+	println("Height: " + fmt.Sprint(poke.Height))
+	println("Weight: " + fmt.Sprint(poke.Weight))
+
+	for _, stat := range poke.Stats {
+		println("-" + stat.Stat.Name + ": " + fmt.Sprint(stat.BaseStat))
+	}
+
+	for _, t := range poke.Types {
+		println("-" + t.Type.Name)
+	}
+
 }
