@@ -276,13 +276,15 @@ func (poke *Pokemon) Details() {
 	println("Name: " + poke.Name)
 	println("Height: " + fmt.Sprint(poke.Height))
 	println("Weight: " + fmt.Sprint(poke.Weight))
+	println("Stats: ")
 
 	for _, stat := range poke.Stats {
-		println("-" + stat.Stat.Name + ": " + fmt.Sprint(stat.BaseStat))
+		println("	-" + stat.Stat.Name + ": " + fmt.Sprint(stat.BaseStat))
 	}
+	println("Types: ")
 
 	for _, t := range poke.Types {
-		println("-" + t.Type.Name)
+		println("	-" + t.Type.Name)
 	}
 
 }
